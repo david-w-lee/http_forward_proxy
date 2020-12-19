@@ -6,7 +6,8 @@ namespace http_forward_proxy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Server.Run();
+            Console.ReadLine();
         }
     }
 }
