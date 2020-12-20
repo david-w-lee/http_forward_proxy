@@ -1,4 +1,8 @@
-﻿using System;
+﻿using log4net;
+using log4net.Config;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace http_forward_proxy
 {
@@ -6,7 +10,10 @@ namespace http_forward_proxy
     {
         static void Main(string[] args)
         {
-            Server.Run();
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+
+            ServerAsync.Run();
             Console.ReadLine();
         }
     }
